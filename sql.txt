@@ -1,0 +1,100 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Sep 04, 2016 at 12:57 AM
+-- Server version: 5.7.13-0ubuntu0.16.04.2
+-- PHP Version: 7.0.8-0ubuntu0.16.04.2
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `fb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fb_comments`
+--
+
+CREATE TABLE `fb_comments` (
+  `id` int(11) NOT NULL,
+  `fbpost` varchar(35) NOT NULL,
+  `fbid` varchar(35) NOT NULL,
+  `from_name` varchar(150) NOT NULL,
+  `from_id` bigint(20) NOT NULL,
+  `message` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fb_phrase`
+--
+
+CREATE TABLE `fb_phrase` (
+  `id` int(11) NOT NULL,
+  `fbid` varchar(35) NOT NULL,
+  `phrase` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fb_posts`
+--
+
+CREATE TABLE `fb_posts` (
+  `id` int(11) NOT NULL,
+  `fbid` varchar(35) CHARACTER SET utf8 NOT NULL,
+  `title` varchar(250) CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `fb_comments`
+--
+ALTER TABLE `fb_comments`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `fbid` (`fbid`);
+ALTER TABLE `fb_comments` ADD FULLTEXT KEY `message` (`message`);
+
+--
+-- Indexes for table `fb_phrase`
+--
+ALTER TABLE `fb_phrase`
+  ADD PRIMARY KEY (`id`);
+ALTER TABLE `fb_phrase` ADD FULLTEXT KEY `phrase` (`phrase`);
+
+--
+-- Indexes for table `fb_posts`
+--
+ALTER TABLE `fb_posts`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `fbid` (`fbid`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `fb_comments`
+--
+ALTER TABLE `fb_comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+--
+-- AUTO_INCREMENT for table `fb_phrase`
+--
+ALTER TABLE `fb_phrase`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+--
+-- AUTO_INCREMENT for table `fb_posts`
+--
+ALTER TABLE `fb_posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
